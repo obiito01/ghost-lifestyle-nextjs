@@ -164,7 +164,7 @@ const Product = ({ product }) => {
 };
 
 export const getStaticPaths = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_HOST_NAME}/api/products`);
+  const res = await fetch(`http://ghost-lifestyle-e-commerce/api/products`);
   const products = await res.json();
 
   const paths = products.map((product) => ({
@@ -178,12 +178,8 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async (context) => {
-  const baseURL =
-    "development" === process.env.NEXT_PUBLIC_ENV
-      ? "http://localhost:3000"
-      : "https://example.com";
   const res = await fetch(
-    `${baseURL}/api/products/${context.params.productId}`
+    `http://ghost-lifestyle-e-commerce/api/products/${context.params.productId}`
   );
   const product = await res.json();
 
