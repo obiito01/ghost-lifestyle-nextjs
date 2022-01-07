@@ -179,7 +179,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const res = await fetch(
-    `${process.envNEXT_PUBLIC_HOST_NAME}/api/products/${context.params.productId}`
+    `${process.env.NEXT_PUBLIC_HOST_NAME}/api/products/${context.params.productId}`
   );
   const product = await res.json();
 
