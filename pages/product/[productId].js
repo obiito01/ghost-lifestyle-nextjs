@@ -164,7 +164,7 @@ const Product = ({ product }) => {
 };
 
 export const getStaticPaths = async () => {
-  const res = await fetch("http://localhost:3000/api/products");
+  const res = await fetch(`${process.env.NEXT_PUBLIC_HOST_NAME}/api/products`);
   const products = await res.json();
 
   const paths = products.map((product) => ({
@@ -179,7 +179,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const res = await fetch(
-    `http://localhost:3000/api/products/${context.params.productId}`
+    `${process.envNEXT_PUBLIC_HOST_NAME}/api/products/${context.params.productId}`
   );
   const product = await res.json();
 
