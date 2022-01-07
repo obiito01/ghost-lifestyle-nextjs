@@ -28,7 +28,11 @@ export default function Home({ products }) {
 }
 
 export const getStaticProps = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_HOST_NAME}/api/products`);
+  const baseURL =
+    "development" === process.env.NEXT_PUBLIC_ENV
+      ? "http://localhost:3000"
+      : "https://example.com";
+  const res = await fetch(`${baseURL}/api/products`);
   const products = await res.json();
 
   return {
